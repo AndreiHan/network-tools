@@ -51,7 +51,7 @@ def option3():
 
 
 def clear():
-    os.system('cls')  # on Linux System
+    os.system('cls')
 
 
 def main_menu():
@@ -78,6 +78,3 @@ def main_menu():
             if 1 <= option <= 4:
                 ask_yesno("Do you want to go back? y/N")
                 clear()
-
-    print('Bye now!')
-    exit()
