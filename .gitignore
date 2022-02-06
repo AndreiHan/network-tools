@@ -1,4 +1,4 @@
 .idea
-tests/__pycache__/
-tests/.pytest_cache/
-tools/__pycache__/
+tests/__pycache__
+tests/.pytest_cache
+tools/__pycache__
