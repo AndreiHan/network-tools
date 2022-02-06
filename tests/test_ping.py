@@ -8,10 +8,11 @@ server_list_true_dns = ["1.1.1.1", "8.8.8.8", "1.0.0.1", "8.8.4.4"]
 server_list_true_all = [server_list_true_local, server_list_true_dns]
 server_list_false = ["0:0:0:0:0:0:0:2", "192.168.2.2", "test", "12345", "123.123.123.123.123", "0", "1"]
 
+
 @pytest.fixture()
 def list_true():
-    filename = 'list_true_local.txt'
-    f = open(server_list_true_local.txt, 'r+')
+    'list_true_local.txt'
+    open(server_list_true_local.txt, 'r+')
 
 
 # Test ping()

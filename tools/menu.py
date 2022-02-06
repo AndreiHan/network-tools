@@ -57,6 +57,7 @@ def clear():
 def main_menu():
     while True:
         print_menu()
+
         try:
             option = int(input('Enter your choice: '))
         except:

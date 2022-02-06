@@ -8,7 +8,6 @@ def renew_ip():
 
 def get_current_dns():
     import dns.resolver
-    import netifaces
     dns_resolver = dns.resolver.Resolver()
     return dns_resolver.nameservers[0]
 
