@@ -1,9 +1,7 @@
 import os
-
-from tools import network
-from tools.ip import renew_ip
 from tools.speed import speedtest_verbose
 from tools.network import Network
+
 
 def ask_yesno(question):
     """
@@ -41,7 +39,6 @@ def clear():
 
 
 def main_menu():
-
     network = Network()
 
     while True:

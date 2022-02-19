@@ -11,7 +11,7 @@ server_list_false = ["0:0:0:0:0:0:0:2", "192.168.2.2", "test", "12345", "123.123
 
 @pytest.fixture()
 def list_true():
-    'list_true_local.txt'
+    """list_true_local.txt"""
     open(server_list_true_local.txt, 'r+')
 
 

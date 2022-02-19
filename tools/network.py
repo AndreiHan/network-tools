@@ -1,5 +1,5 @@
 from tools.ip import *
-from tools.ping import ping, ping_multiple
+from tools.ping import ping_multiple
 
 
 class Network:
