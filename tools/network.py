@@ -1,4 +1,4 @@
-from tools.ip import *
+from tools.ip import get_gateway_ip, get_current_dns, get_local_ip, refresh_connection, renew_ip, flush_dns
 from tools.ping import ping_multiple
 
 
