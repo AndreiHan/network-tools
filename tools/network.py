@@ -8,6 +8,7 @@ class Network:
     gateway = "0.0.0.0"
 
     local_list = ["localhost", "0:0:0:0:0:0:0:1", "127.0.0.1"]
+    common_dns = ["1.1.1.1", "8.8.8.8", "1.0.0.1", "8.8.4.4"]
 
     def __init__(self):
         self.gateway = get_gateway_ip()
@@ -16,10 +17,38 @@ class Network:
 
         self.local_list.append(self.local_ip)
         self.local_list.append(self.gateway)
+        self.common_dns.append(self.dns)
 
-    def self_test(self):
+    def refresh_connection(self):
+        refresh_connection()
+        self.__init__()
+
+    def renew_ip(self):
+        renew_ip()
+        self.__init__()
+
+    def flush_dns(self):
+        flush_dns()
+        self.__init__()
+
+    def local_test(self):
+        return ping_multiple(self.local_list) == 1
+
+    def local_test_verbose(self):
         if ping_multiple(self.local_list) == 1:
-            print("All looks good")
+            print("Local Test Looks Good")
+
+    def dns_test(self):
+        return ping_multiple(self.common_dns) == 1
+
+    def dns_test_verbose(self):
+        if ping_multiple(self.common_dns) == 1:
+            print("DNS Test Looks Good")
+
+    def display_all(self):
+        self.display_local_ip()
+        self.display_dns()
+        self.display_gateway()
 
     def display_local_ip(self):
         print("Local IP: " + self.local_ip)
@@ -29,8 +58,3 @@ class Network:
 
     def display_gateway(self):
         print("Default Gateway: " + self.gateway)
-
-    def display_all(self):
-        self.display_local_ip()
-        self.display_dns()
-        self.display_gateway()

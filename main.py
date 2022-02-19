@@ -1,7 +1,4 @@
+from tools.menu import main_menu
 
-from tools.network import *
-
-network = Network()
-
-network.display_all()
-network.self_test()
+if __name__ == "__main__":
+    main_menu()

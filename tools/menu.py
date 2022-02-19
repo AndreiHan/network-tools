@@ -1,8 +1,9 @@
 import os
-from tools.ip import renew_ip
-from tools.network import network_status
-from tools.speed import speedtest_verbose
 
+from tools import network
+from tools.ip import renew_ip
+from tools.speed import speedtest_verbose
+from tools.network import Network
 
 def ask_yesno(question):
     """
@@ -35,26 +36,14 @@ def print_menu():
         print(key, '--', menu_options[key])
 
 
-def option1():
-    network_status()
-
-
-def option2():
-    renew_ip()
-
-
-def option3():
-    print("Speed Test Is loading")
-    print("")
-    speedtest_verbose()
-    print("")
-
-
 def clear():
     os.system('cls')
 
 
 def main_menu():
+
+    network = Network()
+
     while True:
         print_menu()
 
@@ -65,11 +54,14 @@ def main_menu():
 
         else:
             if option == 1:
-                option1()
+                network.display_all()
             elif option == 2:
-                option2()
+                network.refresh_connection()
+                network.display_all()
+
             elif option == 3:
-                option3()
+                speedtest_verbose()
+
             elif option == 4:
                 print('Bye now!')
                 exit()
@@ -77,5 +69,8 @@ def main_menu():
                 print('Invalid option. Please enter a number between 1 and 4.')
 
             if 1 <= option <= 4:
-                ask_yesno("Do you want to go back? y/N")
-                clear()
+                if ask_yesno("Do you want to go back? y/N") == 1:
+                    clear()
+                else:
+                    print('Bye now!')
+                    exit()

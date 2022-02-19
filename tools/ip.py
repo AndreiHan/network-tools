@@ -1,10 +1,17 @@
+def refresh_connection():
+    flush_dns()
+    renew_ip()
+
 def renew_ip():
     import subprocess
-    subprocess.call(["ipconfig", "/flushdns"], shell=True)
     subprocess.call(["ipconfig", "/release"], shell=True)
     subprocess.call(["ipconfig", "/renew"], shell=True)
-    get_local_ip_verbose()
 
+def flush_dns():
+    import subprocess
+    subprocess.call(["ipconfig", "/flushdns"], shell=True)
+    subprocess.call(["netsh", "winsock", "reset", "catalog"], shell=True)
+    subprocess.call(["netsh", "int", "ip", "reset"], shell=True)
 
 def get_current_dns():
     import dns.resolver
