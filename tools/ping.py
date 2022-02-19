@@ -1,4 +1,3 @@
-
 from tools.ip import get_current_dns, get_gateway_ip
 
 
@@ -64,6 +63,11 @@ def ping_multiple_dictionary(servers):
             servers_status[i] = 1
 
     return servers_status
+
+
+def ping_multiple(servers):
+    for i in servers:
+        return ping(i) == 1
 
 
 def ping_multiple_verbose(servers):
