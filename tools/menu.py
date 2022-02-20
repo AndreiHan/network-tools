@@ -25,9 +25,9 @@ def ask_yesno(question):
 
 def print_menu():
     menu_options = {
-        1: 'Network Status',
-        2: 'Refresh Connection (Renew IP)',
-        3: 'Speed Test',
+        1: 'Network Status - with Speed Test',
+        2: 'Network Status - without Speed Test',
+        3: 'Refresh Connection (Renew IP)',
         4: 'Exit',
     }
     for key in menu_options.keys():
@@ -51,13 +51,12 @@ def main_menu():
 
         else:
             if option == 1:
-                network.display_all()
+                network.status(True)
             elif option == 2:
+                network.status(False)
+            elif option == 3:
                 network.refresh_connection()
                 network.display_all()
-
-            elif option == 3:
-                speedtest_verbose()
 
             elif option == 4:
                 print('Bye now!')

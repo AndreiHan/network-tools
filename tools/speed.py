@@ -1,9 +1,9 @@
 import subprocess
 
 
-def speedtest_silent():
-    return subprocess.call("speedtest-cli --simple")
+def speedtest():
+    return subprocess.check_output(['speedtest-cli', '--simple'])
 
 
 def speedtest_verbose():
-    subprocess.call("speedtest-cli --simple")
+    subprocess.call("speedtest-cli")
