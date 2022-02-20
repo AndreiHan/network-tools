@@ -30,6 +30,11 @@ def flush_dns():
         subprocess.call(["sudo", "resolvectl", "flush-caches"], shell=True)
 
 
+def get_hostname():
+    import socket
+    return socket.gethostname()
+
+
 def get_current_dns():
     dns_resolver = dns.resolver.Resolver()
     return dns_resolver.nameservers[0]
