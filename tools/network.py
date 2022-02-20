@@ -1,4 +1,5 @@
-from tools.ip import get_gateway_ip, get_current_dns, get_local_ip, refresh_connection, renew_ip, flush_dns
+from tools.ip import get_gateway_ip, get_current_dns, get_local_ip, refresh_connection, renew_ip, flush_dns, \
+    get_hostname
 from tools.ping import ping_multiple
 
 
@@ -9,6 +10,7 @@ class Network:
     speed = None
     local_list = []
     common_dns = []
+    current_config = {}
 
     def __init__(self):
         self.gateway = get_gateway_ip()
@@ -20,12 +22,27 @@ class Network:
         self.local_list.append(self.local_ip)
         self.local_list.append(self.gateway)
         self.common_dns.append(self.dns)
+        self.create_status_json()
 
     def status(self, speed_test):
         self.display_all()
         self.test_network()
         if speed_test:
             self.test_speed_verbose()
+        self.export()
+
+    def export(self):
+        import json
+        json_object = json.dumps(self.current_config, indent=4)
+        with open('output/status.json', 'w+') as openfile:
+            openfile.write(json_object)
+            openfile.close()
+
+    def create_status_json(self):
+        self.current_config["Hostname"] = get_hostname()
+        self.current_config["Local IP"] = self.local_ip
+        self.current_config["Default Gateway"] = self.gateway
+        self.current_config["Primary DNS"] = self.dns
 
     def test_network(self):
         self.test_local_verbose()
