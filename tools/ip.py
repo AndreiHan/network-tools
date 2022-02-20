@@ -4,16 +4,26 @@ def refresh_connection():
 
 
 def renew_ip():
+    import platform
     import subprocess
-    subprocess.call(["ipconfig", "/release"], shell=True)
-    subprocess.call(["ipconfig", "/renew"], shell=True)
+    if platform.system().lower() == 'windows':
+        subprocess.call(["ipconfig", "/release"], shell=True)
+        subprocess.call(["ipconfig", "/renew"], shell=True)
+    else:
+        subprocess.call(["sudo", "dhclient", "-r"], shell=True)
+        subprocess.call(["sudo", "dhclient"], shell=True)
 
 
 def flush_dns():
     import subprocess
-    subprocess.call(["ipconfig", "/flushdns"], shell=True)
-    subprocess.call(["netsh", "winsock", "reset", "catalog"], shell=True)
-    subprocess.call(["netsh", "int", "ip", "reset"], shell=True)
+    import platform
+    if platform.system().lower() == 'windows':
+        subprocess.call(["ipconfig", "/flushdns"], shell=True)
+        subprocess.call(["netsh", "winsock", "reset", "catalog"], shell=True)
+        subprocess.call(["netsh", "int", "ip", "reset"], shell=True)
+    else:
+        subprocess.call(["sudo", "systemd-resolve", "--flush-caches"], shell=True)
+        subprocess.call(["sudo", "resolvectl", "flush-caches"], shell=True)
 
 
 def get_current_dns():
