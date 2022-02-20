@@ -1,5 +1,4 @@
 import os
-from tools.speed import speedtest_verbose
 from tools.network import Network
 
 

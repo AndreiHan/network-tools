@@ -21,7 +21,7 @@ class Network:
         self.local_list.append(self.gateway)
         self.common_dns.append(self.dns)
 
-    def status(self,speed_test):
+    def status(self, speed_test):
         self.display_all()
         self.test_network()
         if speed_test:
