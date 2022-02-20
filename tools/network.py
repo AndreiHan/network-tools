@@ -33,6 +33,7 @@ class Network:
 
     def export(self):
         import json
+        self.create_status_json()
         json_object = json.dumps(self.current_config, indent=4)
         with open('output/status.json', 'w+') as openfile:
             openfile.write(json_object)
@@ -43,6 +44,7 @@ class Network:
         self.current_config["Local IP"] = self.local_ip
         self.current_config["Default Gateway"] = self.gateway
         self.current_config["Primary DNS"] = self.dns
+        self.current_config["Speed"] = str(self.speed).replace("\r\n", " ")
 
     def test_network(self):
         self.test_local_verbose()
