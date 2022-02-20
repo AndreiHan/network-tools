@@ -1,5 +1,5 @@
-import netifaces
 import dns.resolver
+import netifaces
 
 
 def refresh_connection():
