@@ -44,7 +44,7 @@ class Network:
             openfile.close()
 
     def create_status_json(self):
-        self.current_config["Hostname"] = get_hostname()
+        self.current_config["Hostname"] = self.hostname
         self.current_config["Local IP"] = self.local_ip
         self.current_config["Default Gateway"] = self.gateway
         self.current_config["Primary DNS"] = self.dns
