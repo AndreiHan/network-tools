@@ -1,3 +1,7 @@
+import netifaces
+import dns.resolver
+
+
 def refresh_connection():
     flush_dns()
     renew_ip()
@@ -27,20 +31,17 @@ def flush_dns():
 
 
 def get_current_dns():
-    import dns.resolver
     dns_resolver = dns.resolver.Resolver()
     return dns_resolver.nameservers[0]
 
 
 def get_gateway_ip_verbose():
-    import netifaces
     gws = netifaces.gateways()
     gateway = gws['default'][netifaces.AF_INET][0]
     print("Gateway IP: " + gateway)
 
 
 def get_gateway_ip():
-    import netifaces
     gws = netifaces.gateways()
     gateway = gws['default'][netifaces.AF_INET][0]
     return gateway
