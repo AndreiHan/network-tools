@@ -1,9 +1,11 @@
 from tools.ip import get_gateway_ip, get_current_dns, get_local_ip, refresh_connection, renew_ip, flush_dns, \
     get_hostname
 from tools.ping import ping_multiple
+from tools.port import check_port_common_verbose
 
 
 class Network:
+    hostname = "localhost"
     local_ip = "0.0.0.0"
     dns = "0.0.0.0"
     gateway = "0.0.0.0"
@@ -13,6 +15,7 @@ class Network:
     current_config = {}
 
     def __init__(self):
+        self.hostname = get_hostname()
         self.gateway = get_gateway_ip()
         self.dns = get_current_dns()
         self.local_ip = get_local_ip()
@@ -29,6 +32,7 @@ class Network:
         self.test_network()
         if speed_test:
             self.test_speed_verbose()
+        self.check_ports_verbose()
         self.export()
 
     def export(self):
@@ -45,6 +49,9 @@ class Network:
         self.current_config["Default Gateway"] = self.gateway
         self.current_config["Primary DNS"] = self.dns
         self.current_config["Speed"] = str(self.speed).replace("\r\n", " ")
+
+    def check_ports_verbose(self):
+        check_port_common_verbose(self.local_ip)
 
     def test_network(self):
         self.test_local_verbose()
@@ -90,10 +97,14 @@ class Network:
         self.__init__()
 
     def display_all(self):
+        self.display_hostname()
         self.display_local_ip()
         self.display_dns()
         self.display_gateway()
         self.display_speed()
+
+    def display_hostname(self):
+        print("Hostname: " + self.hostname)
 
     def display_speed(self):
         if self.speed is not None:
