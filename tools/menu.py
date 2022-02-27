@@ -1,7 +1,7 @@
 import os
 
 from tools.network import Network
-
+from ssh.ssh_menu import ssh_main_menu
 
 def ask_yesno(question):
     """
@@ -28,7 +28,8 @@ def print_menu():
         1: 'Network Status - with Speed Test',
         2: 'Network Status - without Speed Test',
         3: 'Refresh Connection (Renew IP)',
-        4: 'Exit',
+        4: 'SSH Menu',
+        5: 'Exit',
     }
     for key in menu_options.keys():
         print(key, '--', menu_options[key])
@@ -57,14 +58,16 @@ def main_menu():
             elif option == 3:
                 network.refresh_connection()
                 network.display_all()
-
             elif option == 4:
+                clear()
+                ssh_main_menu()
+            elif option == 5:
                 print('Bye now!')
                 exit()
             else:
                 print('Invalid option. Please enter a number between 1 and 4.')
 
-            if 1 <= option <= 4:
+            if 1 <= option <= 3:
                 if ask_yesno("Do you want to go back? y/N") == 1:
                     clear()
                 else:
