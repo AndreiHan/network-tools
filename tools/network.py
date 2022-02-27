@@ -31,7 +31,11 @@ class Network:
         self.display_all()
         self.test_network()
         if speed_test:
+            print("")
+            print("###PING###")
+            print("")
             self.test_speed_verbose()
+            print("")
         self.check_ports_verbose()
         self.export()
 
@@ -75,7 +79,9 @@ class Network:
 
     def test_local_verbose(self):
         if ping_multiple(self.local_list) == 1:
+            print("")
             print("Local Test Looks Good")
+            print("")
 
     def test_dns(self):
         return ping_multiple(self.common_dns) == 1
