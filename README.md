@@ -18,3 +18,6 @@ sudo chmod +x run.bat
 
 -The run.bat file will create and run a container with all the requirements.<br/>
 -After the user exits the container it will be stopped and deleted.
+
+![My Image](readme jpg/Menu%201.png)
+![My Image](readme jpg/Menu%202.png)
