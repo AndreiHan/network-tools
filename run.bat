@@ -6,6 +6,6 @@ docker exec -it tools.network python main.py
 
 docker stop tools.network
 
-docker rm tools.network
+docker rm -f tools.network
 
-docker rmi network:latest
+docker rmi -f network:latest
