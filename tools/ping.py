@@ -95,5 +95,4 @@ def ping(host):
     import subprocess
     # Building the command. Ex: "ping -c 1 google.com"
     command = ['ping', param, '1', host]
-    DETACHED_PROCESS = 0x00000008
-    return subprocess.call(command, creationflags=DETACHED_PROCESS) == 0
+    return subprocess.call(command) == 0
