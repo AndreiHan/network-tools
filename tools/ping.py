@@ -1,5 +1,6 @@
 from tools.ip import get_current_dns, get_gateway_ip
-
+import subprocess
+import platform
 
 def ping_gateway_verbose():
     if ping(get_gateway_ip()) == 1:
@@ -88,11 +89,11 @@ def ping(host):
     Returns True if host (str) responds to a ping request.
     Remember that a host may not respond to a ping (ICMP) request even if the host name is valid.
     """
-    import platform
+
     # Option for the number of packets as a function of
     param = '-n' if platform.system().lower() == 'windows' else '-c'
 
-    import subprocess
+
     # Building the command. Ex: "ping -c 1 google.com"
     command = ['ping', param, '1', host]
     return subprocess.call(command) == 0
