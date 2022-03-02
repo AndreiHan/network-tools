@@ -7,6 +7,9 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 # Install dependencies:
 COPY requirements.txt .
 RUN apt-get update && pip install -r requirements.txt && apt-get install -y iputils-ping
+# Copy Project Files
+COPY tools /project/tools
+COPY ssh /project/ssh
+COPY main.py  /project/
 # Run the application:
-COPY . .
-CMD ["python", "main.py"]
+CMD ["python", "project/main.py"]
