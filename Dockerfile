@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:slim
 
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
@@ -6,10 +6,13 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies:
 COPY requirements.txt .
-RUN apt-get update && pip install -r requirements.txt && apt-get install -y iputils-ping
+RUN apt-get update && apt-get install -y build-essential && pip install -r requirements.txt && apt-get install build-essential && apt-get install -y iputils-ping
+
 # Copy Project Files
-COPY tools /project/tools
-COPY ssh /project/ssh
-COPY main.py  /project/
+COPY input /input/
+COPY tools /tools/
+COPY ssh /ssh/
+COPY output /output/
+COPY main.py  .
 # Run the application:
-CMD ["python", "project/main.py"]
+CMD ["python", "main.py"]
