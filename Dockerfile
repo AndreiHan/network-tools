@@ -13,6 +13,6 @@ COPY input /input/
 COPY tools /tools/
 COPY ssh /ssh/
 COPY output /output/
-COPY main.py  .
+COPY main.py  ./
 # Run the application:
 CMD ["python", "main.py"]
