@@ -31,11 +31,7 @@ class Network:
         self.display_all()
         self.test_network()
         if speed_test:
-            print("")
-            print("###PING###")
-            print("")
             self.test_speed_verbose()
-            print("")
         self.check_ports_verbose()
         self.export()
 

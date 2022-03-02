@@ -11,23 +11,23 @@ def renew_ip():
     import platform
     import subprocess
     if platform.system().lower() == 'windows':
-        subprocess.call(["ipconfig", "/release"], shell=True)
-        subprocess.call(["ipconfig", "/renew"], shell=True)
+        subprocess.call(["ipconfig", "/release"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+        subprocess.call(["ipconfig", "/renew"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
     else:
-        subprocess.call(["sudo", "dhclient", "-r"], shell=True)
-        subprocess.call(["sudo", "dhclient"], shell=True)
+        subprocess.call(["sudo", "dhclient", "-r"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+        subprocess.call(["sudo", "dhclient"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
 
 
 def flush_dns():
     import subprocess
     import platform
     if platform.system().lower() == 'windows':
-        subprocess.call(["ipconfig", "/flushdns"], shell=True)
-        subprocess.call(["netsh", "winsock", "reset", "catalog"], shell=True)
-        subprocess.call(["netsh", "int", "ip", "reset"], shell=True)
+        subprocess.call(["ipconfig", "/flushdns"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+        subprocess.call(["netsh", "winsock", "reset", "catalog"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+        subprocess.call(["netsh", "int", "ip", "reset"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
     else:
-        subprocess.call(["sudo", "systemd-resolve", "--flush-caches"], shell=True)
-        subprocess.call(["sudo", "resolvectl", "flush-caches"], shell=True)
+        subprocess.call(["sudo", "systemd-resolve", "--flush-caches"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
+        subprocess.call(["sudo", "resolvectl", "flush-caches"], shell=True,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT)
 
 
 def get_hostname():

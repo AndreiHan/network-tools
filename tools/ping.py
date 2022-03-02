@@ -96,4 +96,4 @@ def ping(host):
 
     # Building the command. Ex: "ping -c 1 google.com"
     command = ['ping', param, '1', host]
-    return subprocess.call(command) == 0
+    return subprocess.call(command,stdout=subprocess.DEVNULL,stderr=subprocess.STDOUT) == 0
