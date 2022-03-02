@@ -1,5 +1,6 @@
 import os
-
+import platform
+import subprocess
 from tools.network import Network
 from ssh.ssh_menu import ssh_main_menu
 
@@ -36,7 +37,10 @@ def print_menu():
 
 
 def clear():
-    os.system('cls')
+    import platform
+    param = 'cls' if platform.system().lower() == 'windows' else 'clear'
+    command = [param]
+    return subprocess.call(command, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
 
 
 def main_menu():
