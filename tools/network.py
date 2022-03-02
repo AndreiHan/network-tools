@@ -36,11 +36,14 @@ class Network:
         self.export()
 
     def export(self):
+        from tools.fileManager import init_files
+        init_files()
         import json
         self.create_status_json()
         json_object = json.dumps(self.current_config, indent=4)
         with open('output/status.json', 'w+') as openfile:
             openfile.write(json_object)
+            print("Wrote status to output/status.json")
             openfile.close()
 
     def create_status_json(self):

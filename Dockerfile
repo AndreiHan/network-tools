@@ -6,7 +6,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies:
 COPY requirements.txt .
-RUN apt-get update && apt-get install -y build-essential && pip install -r requirements.txt && apt-get install build-essential && apt-get install -y iputils-ping
+RUN apt-get update && apt-get install -y build-essential && pip install -r requirements.txt && apt-get install -y iputils-ping
 
 # Copy Project Files
 COPY input /input/
