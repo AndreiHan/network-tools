@@ -4,3 +4,5 @@ tests/.pytest_cache
 tools/__pycache__
 /output/status.json
 input/ssh-credentials.txt
+tests/input
+tests/output
