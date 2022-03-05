@@ -1,6 +1,6 @@
 # network-tools
 
-## How to run the app in a virtual environment:
+## How to run the app in a docker container:
 Requirement: Docker
 
 ### Windows:
