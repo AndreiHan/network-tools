@@ -2,10 +2,12 @@ import os
 
 
 def init_files():
+    print("######################### File Creation:")
     create_folder("output")
     create_folder("input")
     create_file("input/ssh-credentials.txt")
     create_file("output/status.json")
+    print("########################################")
 
 
 def create_file(name):

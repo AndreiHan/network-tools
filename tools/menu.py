@@ -1,8 +1,7 @@
-import os
-import platform
 import subprocess
 from tools.network import Network
 from ssh.ssh_menu import ssh_main_menu
+
 
 def ask_yesno(question):
     """
@@ -47,6 +46,7 @@ def main_menu():
     network = Network()
 
     while True:
+        clear()
         print_menu()
 
         try:
@@ -56,10 +56,12 @@ def main_menu():
 
         else:
             if option == 1:
+                clear()
                 network.status(True)
             elif option == 2:
                 network.status(False)
             elif option == 3:
+                clear
                 network.refresh_connection()
                 network.display_all()
             elif option == 4:
